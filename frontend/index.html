@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPortal — Student Course Management System</title>
+  <meta name="description" content="A modern learning management platform for students to enroll in courses, attempt quizzes, and manage their academic profile." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       AUTH SCREEN (login / register)
+  ══════════════════════════════════════ -->
+  <section id="section-auth" class="auth-screen">
+    <div class="auth-brand">
+      <div class="brand-logo">🎓</div>
+      <h1 class="brand-name">EduPortal</h1>
+      <p class="brand-tagline">Your Learning Journey Starts Here</p>
+    </div>
+
+    <div class="auth-card">
+      <!-- Login Panel -->
+      <div id="login-panel">
+        <h2 class="auth-title">Welcome Back</h2>
+        <p class="auth-subtitle">Sign in to continue learning</p>
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter password" required />
+          </div>
+          <div id="login-error" class="form-error" role="alert"></div>
+          <button type="submit" class="btn-primary btn-full">Sign In →</button>
+        </form>
+        <p class="auth-switch">Don't have an account? <button id="show-register" class="link-btn">Create one</button></p>
+      </div>
+
+      <!-- Register Panel -->
+      <div id="register-panel" style="display:none;">
+        <h2 class="auth-title">Create Account</h2>
+        <p class="auth-subtitle">Join thousands of learners today</p>
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password <small>(min 6 chars)</small></label>
+            <input type="password" id="reg-password" placeholder="Create password" required />
+          </div>
+          <div id="register-error" class="form-error" role="alert"></div>
+          <button type="submit" class="btn-primary btn-full">Create Account →</button>
+        </form>
+        <p class="auth-switch">Already have an account? <button id="show-login" class="link-btn">Sign in</button></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       MAIN APP SHELL
+  ══════════════════════════════════════ -->
+
+  <!-- Navigation Bar -->
+  <nav id="main-nav" class="main-nav" style="display:none;">
+    <div class="nav-brand">
+      <span class="nav-logo">🎓</span>
+      <span class="nav-title">EduPortal</span>
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="courses">📚 Courses</button>
+      <button class="nav-tab" data-tab="my-courses">🗂 My Courses</button>
+      <button class="nav-tab" data-tab="quiz">📝 Quiz</button>
+      <button class="nav-tab" data-tab="weather">🌤 Weather</button>
+      <button class="nav-tab" data-tab="profile">👤 Profile</button>
+    </div>
+    <div class="nav-user">
+      <span class="nav-greeting">Hi, <strong id="welcome-name">Student</strong> 👋</span>
+      <button id="logout-btn" class="btn-logout">Logout</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       SECTION: COURSES
+  ══════════════════════════════════════ -->
+  <main class="app-content">
+
+    <section id="section-courses" class="section active">
+      <div class="section-header">
+        <h2>📚 Available Courses</h2>
+        <p>Expand your skills with industry-ready courses taught by expert instructors.</p>
+      </div>
+      <div id="courses-grid" class="courses-grid"></div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: MY COURSES
+    ══════════════════════════════════════ -->
+    <section id="section-my-courses" class="section">
+      <div class="section-header">
+        <h2>🗂 My Enrolled Courses</h2>
+        <p>Track your progress and take quizzes for each enrolled course.</p>
+      </div>
+      <div id="enrolled-list" class="enrolled-list"></div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: QUIZ
+    ══════════════════════════════════════ -->
+    <section id="section-quiz" class="section">
+      <div id="quiz-container" class="quiz-container">
+        <div class="empty-state">
+          <div class="empty-icon">📝</div>
+          <h3>No Quiz Selected</h3>
+          <p>Go to <strong>My Courses</strong> and click "Take Quiz" to start.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: WEATHER
+    ══════════════════════════════════════ -->
+    <section id="section-weather" class="section">
+      <div class="section-header">
+        <h2>🌤 Campus Weather</h2>
+        <p>Check current weather conditions at your campus city.</p>
+      </div>
+      <div class="weather-search">
+        <input type="text" id="weather-city" placeholder="Enter city name…" value="Bangalore" />
+        <button id="weather-search-btn" class="btn-primary">Search</button>
+      </div>
+      <div id="weather-container" class="weather-section"></div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION: PROFILE
+    ══════════════════════════════════════ -->
+    <section id="section-profile" class="section">
+      <div class="section-header">
+        <h2>👤 My Profile</h2>
+        <p>View and update your personal information.</p>
+      </div>
+      <div class="profile-layout">
+        <!-- Info Card -->
+        <div class="profile-card glass-card">
+          <div class="avatar-circle">🎓</div>
+          <div class="profile-info">
+            <div class="profile-info-row">
+              <span class="info-label">Full Name</span>
+              <span class="info-value" id="profile-name">—</span>
+            </div>
+            <div class="profile-info-row">
+              <span class="info-label">Email</span>
+              <span class="info-value" id="profile-email">—</span>
+            </div>
+            <div class="profile-info-row">
+              <span class="info-label">Member Since</span>
+              <span class="info-value" id="profile-joined">—</span>
+            </div>
+            <div class="profile-info-row">
+              <span class="info-label">Courses Enrolled</span>
+              <span class="info-value badge-count" id="profile-course-count">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Card -->
+        <div class="profile-edit-card glass-card">
+          <h3>✏️ Edit Profile</h3>
+          <div class="form-group">
+            <label for="edit-name">Display Name</label>
+            <input type="text" id="edit-name" placeholder="Your full name" />
+          </div>
+          <button id="save-profile-btn" class="btn-primary">Save Changes</button>
+          <p id="profile-msg" class="profile-msg"></p>
+        </div>
+
+        <!-- Enrolled Courses in Profile -->
+        <div class="profile-courses-card glass-card">
+          <h3>📚 Enrolled Courses</h3>
+          <div id="profile-courses-list" class="profile-courses-list"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast notification container (dynamically appended by JS) -->
+
+  <script type="module" src="dist/app.js"></script>
+</body>
+</html>

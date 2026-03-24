@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>EduPortal.API</RootNamespace>
+    <AssemblyName>EduPortal.API</AssemblyName>
+  </PropertyGroup>
+
+  <!--
+    NuGet Packages — Week 2 Topic: Libraries, Assemblies, Packages, NuGet
+    Each package demonstrates a Week 2 concept:
+  -->
+  <ItemGroup>
+    <!-- EF Core + SQLite (zero-setup, no SQL Server install needed) -->
+    <!-- Week 2: Entity Framework Core -->
+      <Compile Remove="tests\**\*.cs" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+
+    <!-- JWT Authentication — Week 2: JWT tokens, Security -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
+
+    <!-- Password hashing — Week 2: Security (NEVER store plain passwords) -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+
+    <!-- Swagger/OpenAPI — Week 2: Using Swagger/OpenAPI -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+</Project>

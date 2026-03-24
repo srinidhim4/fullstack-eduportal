@@ -1,0 +1,72 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  EduPortal.API -> C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\bin\Debug\net8.0\EduPortal.API.dll
+  EduPortal.Tests -> C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\bin\Debug\net8.0\EduPortal.Tests.dll
+Test run for C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\bin\Debug\net8.0\EduPortal.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed EduPortal.Tests.LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(email: "notanemail", password: "pass") [20 ms]
+  Error Message:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Stack Trace:
+     at EduPortal.Tests.LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(String email, String password) in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\EduPortal.Tests.cs:line 106
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed EduPortal.Tests.LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(email: "test@test.com", password: "") [1 ms]
+  Error Message:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Stack Trace:
+     at EduPortal.Tests.LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(String email, String password) in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\EduPortal.Tests.cs:line 106
+   at InvokeStub_LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed EduPortal.Tests.LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(email: "", password: "password123") [< 1 ms]
+  Error Message:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Stack Trace:
+     at EduPortal.Tests.LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(String email, String password) in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\EduPortal.Tests.cs:line 106
+   at InvokeStub_LoginRequestValidationTests.LoginRequest_ShouldBeInvalid_ForBadInputs(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed EduPortal.Tests.JwtServiceTests.GenerateToken_ShouldReturnNonEmptyString_ForValidStudent [234 ms]
+  Error Message:
+   System.ArgumentOutOfRangeException : IDX10720: Unable to create KeyedHashAlgorithm for algorithm 'HS256', the key size must be greater than: '256' bits, key has '248' bits. (Parameter 'keyBytes')
+  Stack Trace:
+     at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.ValidateKeySize(Byte[] keyBytes, String algorithm, Int32 expectedNumberOfBytes)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateKeyedHashAlgorithm(Byte[] keyBytes, String algorithm)
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.CreateKeyedHashAlgorithm()
+   at Microsoft.IdentityModel.Tokens.DisposableObjectPool`1.CreateInstance()
+   at Microsoft.IdentityModel.Tokens.DisposableObjectPool`1.Allocate()
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.GetKeyedHashAlgorithm(Byte[] keyBytes, String algorithm)
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.Sign(Byte[] input)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(SecurityToken token)
+   at EduPortal.API.Services.JwtService.GenerateToken(Student student) in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\src\Services\JwtService.cs:line 62
+   at EduPortal.Tests.JwtServiceTests.GenerateToken_ShouldReturnNonEmptyString_ForValidStudent() in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\EduPortal.Tests.cs:line 53
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed EduPortal.Tests.JwtServiceTests.GenerateToken_ShouldContainThreeParts_WhenValid [4 ms]
+  Error Message:
+   System.ArgumentOutOfRangeException : IDX10720: Unable to create KeyedHashAlgorithm for algorithm 'HS256', the key size must be greater than: '256' bits, key has '248' bits. (Parameter 'keyBytes')
+  Stack Trace:
+     at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.ValidateKeySize(Byte[] keyBytes, String algorithm, Int32 expectedNumberOfBytes)
+   at Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CreateKeyedHashAlgorithm(Byte[] keyBytes, String algorithm)
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.CreateKeyedHashAlgorithm()
+   at Microsoft.IdentityModel.Tokens.DisposableObjectPool`1.CreateInstance()
+   at Microsoft.IdentityModel.Tokens.DisposableObjectPool`1.Allocate()
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.GetKeyedHashAlgorithm(Byte[] keyBytes, String algorithm)
+   at Microsoft.IdentityModel.Tokens.SymmetricSignatureProvider.Sign(Byte[] input)
+   at Microsoft.IdentityModel.JsonWebTokens.JwtTokenUtilities.CreateEncodedSignature(String input, SigningCredentials signingCredentials)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.WriteToken(SecurityToken token)
+   at EduPortal.API.Services.JwtService.GenerateToken(Student student) in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\src\Services\JwtService.cs:line 62
+   at EduPortal.Tests.JwtServiceTests.GenerateToken_ShouldContainThreeParts_WhenValid() in C:\Users\srini\OneDrive\Desktop\HCL\Week2\EduPortal\backend\tests\EduPortal.Tests.cs:line 74
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+
+Failed!  - Failed:     5, Passed:    16, Skipped:     0, Total:    21, Duration: 2 s - EduPortal.Tests.dll (net8.0)
